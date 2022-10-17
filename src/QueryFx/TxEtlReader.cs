@@ -144,17 +144,12 @@
 
             public IDisposable Subscribe(IObserver<EventRecordProxy> observer)
             {
-                IObservable<SystemEvent> events = playback.GetObservable<SystemEvent>();
-                Contract.Assert(this.observer == null, "Multiple subscriptions not supported");
+                IObservable<SystemEvent> observable = playback.GetObservable<SystemEvent>();
                 this.observer = observer;
-
-                //Apply filters on the reader
-                events = reader.ApplyFilters(events);
-                var q = from e in events
-                        select new EventRecordProxy(ref e);
-
-                this.subscriber = q.Subscribe(observer);
-                return this.subscriber;
+                observable = reader.ApplyFilters(observable);
+                IObservable<EventRecordProxy> observable2 = observable.Select((SystemEvent e) => new EventRecordProxy(ref e));
+                subscriber = observable2.Subscribe(observer);
+                return subscriber;
             }
 
             public void Start()
