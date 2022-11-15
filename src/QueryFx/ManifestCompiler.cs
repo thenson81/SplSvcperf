@@ -6,6 +6,7 @@
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Text;
     using Tx.Windows;
 
     public class ManifestCompiler
@@ -28,7 +29,14 @@
             {
                 var manifestDictionary = Tx.Windows.ManifestParser.Parse(File.ReadAllText(manifest));
                 Dictionary<string, string> generated = new Dictionary<string, string>();
+               
+                StringBuilder sb = new StringBuilder();
 
+                foreach (var k in manifestDictionary)
+                {
+                    sb.AppendLine($"{k.Key}  {k.Value}");
+                }
+                File.WriteAllText("OutputCode.txt", sb.ToString());
                 if (TryAddManifest(manifestDictionary.Keys))
                 {
                     AssemblyBuilder.OutputAssembly(manifestDictionary, fullpath);
@@ -87,12 +95,14 @@
 
         static bool TryAddManifest(IEnumerable<string> keyCollection)
         {
+         
+
             foreach (var key in keyCollection)
             {
                 if (!Providers.Contains(key))
                 {
                     Providers.Add(key);
-                    Logger.Log("Adding Manifest: " + key);
+
                 }
                 else
                 {

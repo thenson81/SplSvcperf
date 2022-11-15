@@ -163,6 +163,7 @@
     </ApplicationDefinition>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryFx\CsvHelper.cs" />
+    <Compile Include="QueryFx\Generated.cs" />
     <Compile Include="QueryFx\QueryExecutionContext.cs" />
     <Compile Include="Utilities\CommandLineProcessor.cs" />
     <Compile Include="QueryFx\EtlReader.cs" />
