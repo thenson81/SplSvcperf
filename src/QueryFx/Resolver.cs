@@ -38,6 +38,7 @@
         {
             EnsureInitialized();
 
+
             if (symbols.ContainsKey(id))
             {
                 return symbols[id].Name;
@@ -93,11 +94,20 @@
                     this.ProviderName = this.ProviderId.ToString();
                 }
 
+
                 if (this.Symbols != null)
                 {
+
                     foreach (var item in this.Symbols)
                     {
-                        s.Add(item.Id, item);
+                        if (!s.ContainsKey(item.Id))
+                        {
+                            s.Add(item.Id, item);
+                        }
+                        else
+                        {
+                            Logger.Log(string.Format("WARNING: Manifest {0} contains duplicate Symbols {1}-{2} ", this.ProviderName, item.Id, item));
+                        }
                     }
                 }
 
@@ -105,13 +115,31 @@
                 {
                     foreach (var item in this.Tasks)
                     {
-                        t.Add(item.Id, item);
+                        if (!t.ContainsKey(item.Id))
+                        {
+                            t.Add(item.Id, item);
+                        }
+                        else
+                        {
+                            Logger.Log(string.Format("WARNING: Manifest {0} contains duplicate Tasks {1}-{2} ", this.ProviderName, item.Id, item));
+                        }
                     }
                 }
 
-                foreach (var item in winOpcodes.Values)
+                if (winOpcodes != null)
                 {
-                    o.Add(item.Id, item.Name);
+                    foreach (var item in winOpcodes.Values)
+                    {
+                        if (!o.ContainsKey(item.Id))
+                        {
+                            o.Add(item.Id, item.Name);
+                        }
+                        else
+                        {
+                            Logger.Log(string.Format("WARNING: Manifest {0} contains duplicate WinOpcodes {1}-{2} ", this.ProviderName, item.Id, item.Name));
+                        }
+
+                    }
                 }
 
                 if (this.Opcodes != null)
@@ -133,7 +161,15 @@
                 {
                     foreach (var item in this.Messages)
                     {
-                        m.Add(item.Id, item.Message);
+
+                        if (!m.ContainsKey(item.Id))
+                        {
+                            m.Add(item.Id, item.Message);
+                        }
+                        else
+                        {
+                            Logger.Log(string.Format("WARNING: Manifest {0} contains duplicate Messages {1}-{2} ", this.ProviderName, item.Id, item));
+                        }
                     }
                 }
 
@@ -144,17 +180,17 @@
 
         static Dictionary<int, OpcodeDefinition> winOpcodes = new Dictionary<int, OpcodeDefinition>()
                     {
-                          {  0	    ,   new OpcodeDefinition(0	,	"win:Info"      )},	//	WINEVENT_OPCODE_INFO	An informational event.
-                          {  1	    ,   new OpcodeDefinition(1	,	"win:Start"     )},	//	WINEVENT_OPCODE_START	An event that represents starting an activity.
-                          {  2	    ,   new OpcodeDefinition(2	,	"win:Stop"      )},	//	WINEVENT_OPCODE_STOP	An event that represents stopping an activity. The event corresponds to the last unpaired start event.
-                          {  3	    ,   new OpcodeDefinition(3	,	"win:DC_Start"  )},	//	WINEVENT_OPCODE_DC_START	An event that represents data collection starting. These are rundown event types.
-                          {  4	    ,   new OpcodeDefinition(4	,	"win:DC_Stop"   )},	//	WINEVENT_OPCODE_DC_STOP	An event that represents data collection stopping. These are rundown event types.
-                          {  5	    ,   new OpcodeDefinition(5	,	"win:Extension" )},	//	WINEVENT_OPCODE_EXTENSION	An extension event.
-                          {  6	    ,   new OpcodeDefinition(6	,	"win:Reply"     )},	//	WINEVENT_OPCODE_REPLY	A reply event.
-                          {  7	    ,   new OpcodeDefinition(7	,	"win:Resume"    )},	//	WINEVENT_OPCODE_RESUME	An event that represents an activity resuming after being suspended.
-                          {  8	    ,   new OpcodeDefinition(8	,	"win:Suspend"   )},	//	WINEVENT_OPCODE_SUSPEND	An event that represents the activity being suspended pending another activity's completion.
-                          {  9	    ,   new OpcodeDefinition(9	,	"win:Send"      )},	//	WINEVENT_OPCODE_SEND	An event that represents transferring activity to another component.
-                          {  240	,   new OpcodeDefinition(240	,	"win:Receive"   )}	//	WINEVENT_OPCODE_RECEIVE	An event that represents receiving an activity transfer from another component.
+                          {  0      ,   new OpcodeDefinition(0  ,   "win:Info"      )},	//	WINEVENT_OPCODE_INFO	An informational event.
+                          {  1      ,   new OpcodeDefinition(1  ,   "win:Start"     )},	//	WINEVENT_OPCODE_START	An event that represents starting an activity.
+                          {  2      ,   new OpcodeDefinition(2  ,   "win:Stop"      )},	//	WINEVENT_OPCODE_STOP	An event that represents stopping an activity. The event corresponds to the last unpaired start event.
+                          {  3      ,   new OpcodeDefinition(3  ,   "win:DC_Start"  )},	//	WINEVENT_OPCODE_DC_START	An event that represents data collection starting. These are rundown event types.
+                          {  4      ,   new OpcodeDefinition(4  ,   "win:DC_Stop"   )},	//	WINEVENT_OPCODE_DC_STOP	An event that represents data collection stopping. These are rundown event types.
+                          {  5      ,   new OpcodeDefinition(5  ,   "win:Extension" )},	//	WINEVENT_OPCODE_EXTENSION	An extension event.
+                          {  6      ,   new OpcodeDefinition(6  ,   "win:Reply"     )},	//	WINEVENT_OPCODE_REPLY	A reply event.
+                          {  7      ,   new OpcodeDefinition(7  ,   "win:Resume"    )},	//	WINEVENT_OPCODE_RESUME	An event that represents an activity resuming after being suspended.
+                          {  8      ,   new OpcodeDefinition(8  ,   "win:Suspend"   )},	//	WINEVENT_OPCODE_SUSPEND	An event that represents the activity being suspended pending another activity's completion.
+                          {  9      ,   new OpcodeDefinition(9  ,   "win:Send"      )},	//	WINEVENT_OPCODE_SEND	An event that represents transferring activity to another component.
+                          {  240    ,   new OpcodeDefinition(240    ,   "win:Receive"   )}	//	WINEVENT_OPCODE_RECEIVE	An event that represents receiving an activity transfer from another component.
                     };
 
 

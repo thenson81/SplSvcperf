@@ -836,7 +836,7 @@
 
         void ShowErrors_Click(object sender, RoutedEventArgs e)
         {
-            this.FilterModel.FilterText = "Level<3";
+            this.FilterModel.FilterText = "Level>0 && Level<3";
             this.RefreshSource();
         }
 
