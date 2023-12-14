@@ -16,7 +16,7 @@
     {
         int disposed;
         [ThreadStatic]
-        internal static QueryExecutionContext Current;
+        public static QueryExecutionContext Current;
         List<object> results;
         volatile bool cancelled;
         volatile Exception exception;
@@ -179,7 +179,7 @@
             }
         }
 
-        internal static QueryExecutionContext CreateFromFiles(IList<string> etlfiles, Action<Type> onStart, Action<object> onNext)
+        public static QueryExecutionContext CreateFromFiles(IList<string> etlfiles, Action<Type> onStart, Action<object> onNext)
         {
             Playback playback = new Playback();
             foreach (var item in etlfiles)

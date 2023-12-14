@@ -200,7 +200,7 @@
         /// Tries to fetch the console that created this process or creates a new one if the parent process has no 
         /// console.   Returns true if a NEW console has been created.  
         /// </summary>
-        internal static bool CreateConsole()
+        public static bool CreateConsole()
         {
             bool newConsoleCreated = false;
             // TODO AttachConsole is not reliable (GetStdHandle returns an invalid handle about half the time)

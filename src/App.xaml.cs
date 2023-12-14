@@ -12,7 +12,7 @@
     partial class App : Application
     {
         private static string tempFiles;
-        internal static CommandProcessor CommandLineArgs;
+        public static CommandProcessor CommandLineArgs;
 
         internal const string AppExe = "SvcPerf.exe";
 

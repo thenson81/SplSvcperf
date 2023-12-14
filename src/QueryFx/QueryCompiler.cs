@@ -39,7 +39,7 @@
         }
 
 
-        internal static void Compile(string[] fileNames,
+        public static void Compile(string[] fileNames,
                                     string linqFile,
                                     TextWriter outputStream,
                                     TextWriter errorStream,
@@ -203,7 +203,7 @@
             return assembly;
         }
 
-        internal static string[] GetAssemblyLocations()
+        public static string[] GetAssemblyLocations()
         {
             return new string[] {
                 typeof(System.Reactive.Observer).Assembly.Location,                 // "Reactive"

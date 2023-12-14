@@ -88,7 +88,7 @@
             return isAssembly;
         }
 
-        internal static Task<IList<IViewerPlugin>> LoadPluginsAsync()
+        public static Task<IList<IViewerPlugin>> LoadPluginsAsync()
         {
             return Task.Factory.StartNew(() =>
                 {

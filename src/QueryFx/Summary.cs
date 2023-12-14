@@ -13,7 +13,7 @@
     {
         public const string GetDurationTemplate = "Tx.Summary.GetDuration<{0},{1}>().Dump();";
         public const string GetSlowRequestTemplate = "Tx.Summary.GetSlowRequest<{0},{1}>({2}).Dump();";
-        internal static object GetDuration<T, U>()
+        public static object GetDuration<T, U>()
             where T : SystemEvent
             where U : SystemEvent
         {
@@ -68,7 +68,7 @@
         }
 
 
-        //internal static void TestRawDump<T>()
+        //public static void TestRawDump<T>()
         //{
         //    Playback scope = TxHelper.GetCurrentEtlScope();
         //    var startEvents = scope.GetObservable<T>();
@@ -79,7 +79,7 @@
         static readonly Regex re = new Regex(@"\{([^\s\}]+)\}", RegexOptions.Compiled);
 
         #region Duration Query
-        internal static string GetDurationQuery(StringDictionary fields)
+        public static string GetDurationQuery(StringDictionary fields)
         {
             string input = durationQueryTemplate;
 

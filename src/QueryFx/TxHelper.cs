@@ -9,7 +9,7 @@
 
     class TxHelper
     {
-        internal static Task<TxReader> GetReader(IEnumerable<string> etlFileName, bool isRealtime = false)
+        public static Task<TxReader> GetReader(IEnumerable<string> etlFileName, bool isRealtime = false)
         {
             TaskCompletionSource<TxReader> tsc = new TaskCompletionSource<TxReader>();
             TxReader reader = new TxReader(etlFileName, isRealtime);
@@ -18,7 +18,7 @@
         }
 
 
-        internal static Playback GetCurrentEtlScope(IEnumerable<string> etlfiles, bool isRealtime)
+        public static Playback GetCurrentEtlScope(IEnumerable<string> etlfiles, bool isRealtime)
         {
             try
             {

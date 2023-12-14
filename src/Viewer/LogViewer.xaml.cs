@@ -180,7 +180,7 @@ namespace EtlViewer.Viewer
 
     namespace MailHelpers
     {
-        using Microsoft.Office.Interop.Outlook;
+        //using Microsoft.Office.Interop.Outlook;
 
         class MailHellper
         {
@@ -240,15 +240,15 @@ namespace EtlViewer.Viewer
             [MethodImpl(MethodImplOptions.NoInlining)]
             static bool SendEmailWithOutlook(string filename, string message)
             {
-                var msgFile = Path.GetFileNameWithoutExtension(filename) + ".msg";
-                Microsoft.Office.Interop.Outlook.Application outlook = new Microsoft.Office.Interop.Outlook.Application();
-                MailItem mi = outlook.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
-                mi.To = "sajaya@microsoft.com";
-                mi.Body = message;
-                mi.Attachments.Add(filename);
-                mi.Subject = "SvcPerf Report";
-                Inspector inspector = mi.GetInspector;
-                inspector.Activate();
+                //var msgFile = Path.GetFileNameWithoutExtension(filename) + ".msg";
+                //Microsoft.Office.Interop.Outlook.Application outlook = new Microsoft.Office.Interop.Outlook.Application();
+                //MailItem mi = outlook.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem);
+                //mi.To = "sajaya@microsoft.com";
+                //mi.Body = message;
+                //mi.Attachments.Add(filename);
+                //mi.Subject = "SvcPerf Report";
+                //Inspector inspector = mi.GetInspector;
+                //inspector.Activate();
                 return true;
             }
         }

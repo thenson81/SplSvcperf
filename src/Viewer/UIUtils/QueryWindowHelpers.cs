@@ -20,7 +20,7 @@
     /// </summary>
     class QueryWindowHelpers
     {
-        internal static Task<object> ExecuteQueryAsync(QueryModel model,
+        public static Task<object> ExecuteQueryAsync(QueryModel model,
                                                         string query,
                                                         Playback playback,
                                                         CancellationTokenSource cancelationToken,

@@ -286,7 +286,7 @@ namespace Utilities
 
         private static string s_supportFileDir;
         private static string s_supportFileDirBase;
-        internal static string s_exePath;
+        public static string s_exePath;
 
         #endregion
     }

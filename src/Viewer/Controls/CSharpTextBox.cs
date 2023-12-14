@@ -1,5 +1,8 @@
 ﻿namespace EtlViewer.Viewer.Controls
 {
+    using Microsoft.CodeAnalysis;
+    //using Microsoft.CodeAnalysis.CSharp;
+    using Roslyn;
     using Roslyn.Compilers;
     using Roslyn.Compilers.CSharp;
     using Roslyn.Services.CSharp.Classification;

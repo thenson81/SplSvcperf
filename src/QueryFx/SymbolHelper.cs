@@ -34,7 +34,7 @@
             return resolvers.ToArray();
         }
 
-        internal static bool TryGetValue(Guid guid, out Resolver resolver)
+        public static bool TryGetValue(Guid guid, out Resolver resolver)
         {
             return Cache.TryGetValue(guid, out resolver);
         }

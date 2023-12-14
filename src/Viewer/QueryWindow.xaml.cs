@@ -194,17 +194,17 @@
     {
         static Dictionary<QueryEditorView, QueryWindow> windows = new Dictionary<QueryEditorView, QueryWindow>();
 
-        internal static void Create(QueryEditorView view, bool show)
+        public static void Create(QueryEditorView view, bool show)
         {
             CreateNewWindow(view, show);
         }
 
-        internal static void Remove(QueryEditorView model)
+        public static void Remove(QueryEditorView model)
         {
             windows.Remove(model);
         }
 
-        internal static void Activate(QueryEditorView view)
+        public static void Activate(QueryEditorView view)
         {
             if (windows.ContainsKey(view))
             {
@@ -226,7 +226,7 @@
             }
         }
 
-        internal static bool Activate(string fileName)
+        public static bool Activate(string fileName)
         {
             if (string.IsNullOrEmpty(fileName))
             {
@@ -243,7 +243,7 @@
             return false;
         }
 
-        internal static int Count()
+        public static int Count()
         {
             return windows.Count;
         }

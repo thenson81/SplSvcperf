@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EtlViewer</RootNamespace>
     <AssemblyName>SvcPerf</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SccProjectName>SAK</SccProjectName>
@@ -73,7 +73,46 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Roslyn.Compilers">
+      <HintPath>SupportDlls\Tx\Roslyn.Compilers.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.CSharp">
+      <HintPath>SupportDlls\Tx\Roslyn.Compilers.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services">
+      <HintPath>SupportDlls\Tx\Roslyn.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.CSharp">
+      <HintPath>SupportDlls\Tx\Roslyn.Services.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Utilities">
+      <HintPath>SupportDlls\Tx\Roslyn.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="SvcPerfUI">
+      <HintPath>SupportDlls\Tx\SvcPerfUI.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Reactive.Core">
+      <HintPath>SupportDlls\Tx\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>SupportDlls\Tx\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>SupportDlls\Tx\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>SupportDlls\Tx\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Tx.Core">
+      <HintPath>SupportDlls\Tx\Tx.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Tx.Windows">
+      <HintPath>SupportDlls\Tx\Tx.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Tx.Windows.TypeGeneration">
+      <HintPath>SupportDlls\Tx\Tx.Windows.TypeGeneration.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SupportDlls\Tx\SvcPerfUI.exe">
@@ -256,12 +295,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="SvcPerfUI.csproj">
-      <Project>{5cf23bcd-a1f5-497c-92a6-e98176691913}</Project>
-      <Name>SvcPerfUI</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

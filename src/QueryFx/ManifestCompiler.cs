@@ -88,7 +88,7 @@
             return types.Distinct().ToArray();
         }
 
-        internal static IEnumerable<string> GetGeneratedAssemblies()
+        public static IEnumerable<string> GetGeneratedAssemblies()
         {
             return AssemblyCache.Values;
         }

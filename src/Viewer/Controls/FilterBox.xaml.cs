@@ -420,7 +420,7 @@
             }
         }
 
-        internal static void Add(string filterText, FilterMode filterMode)
+        public static void Add(string filterText, FilterMode filterMode)
         {
             if (string.IsNullOrEmpty(filterText))
             {
@@ -458,13 +458,13 @@
             }
         }
 
-        internal static SearchItem Latest(FilterMode filterMode)
+        public static SearchItem Latest(FilterMode filterMode)
         {
             var item = history.Where(h => h.Mode == filterMode).FirstOrDefault();
             return item ?? SearchItem.Empty;
         }
 
-        internal static SearchItem SetLatest(string insertItem)
+        public static SearchItem SetLatest(string insertItem)
         {
             int separatorIndex = insertItem.IndexOf(":");
             if (separatorIndex > -1)

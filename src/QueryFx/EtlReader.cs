@@ -123,7 +123,7 @@
         static Regex guidRegex = new Regex(@"(?<=ActivityId\s*!*\=*\s*)[A-Fa-f0-9]{8}-([A-Fa-f0-9]{4}-){3}[A-Fa-f0-9]{12}(?![A-Za-z09\-_])", RegexOptions.Compiled);
 
         static Regex rootactivityRegex = new Regex(@"(?<![a-zA-Z])RootActivityId[\s]*=@[0-9]+", RegexOptions.Compiled);
-        internal static Regex MessageExpr = new Regex(@"(?<![a-zA-Z])(message)(?=([\s]*[=!<>.]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
+        public static Regex MessageExpr = new Regex(@"(?<![a-zA-Z])(message)(?=([\s]*[=!<>.]+))", RegexOptions.IgnoreCase | RegexOptions.Compiled);
 
         static Regex[] replacers;
         static string[][] fieldMap = new string[][] { 
