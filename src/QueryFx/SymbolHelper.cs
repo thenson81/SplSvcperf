@@ -26,8 +26,14 @@
                 ManifestParser manifestResolver = new ManifestParser();
                 foreach (var resolver in manifestResolver.Parse(manifest))
                 {
-                    resolvers.Add(resolver);
-                    Cache[resolver.ProviderId] = resolver;
+                    if (resolver != null && !resolvers.Contains(resolver))
+                    {
+                        resolvers.Add(resolver);
+                    }
+                    if (!Cache.ContainsKey(resolver.ProviderId))
+                    {
+                        Cache[resolver.ProviderId] = resolver;
+                    }
                 };
             }
 
